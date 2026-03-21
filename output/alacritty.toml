@@ -15,15 +15,15 @@ cursor = "#e6e6e8"
 text   = "#000000"
 
 [colors.selection]
-background = "#192336"
+background = "#0e141e"
 text       = "#68f3ca"
 
 [colors.search.matches]
-background = "#2a2a2a"
+background = "#32593d"
 foreground = "#e6e6e8"
 
 [colors.search.focused_match]
-background = "#6FAFBD"
+background = "#80bcb6"
 foreground = "#000000"
 
 # Normal colors
@@ -40,21 +40,21 @@ white   = "#adadb9"
 # Bright colors
 [colors.bright]
 black   = "#545c5e"
-red     = "#cd5c60"
+red     = "#f77669"
 green   = "#6fb593"
-yellow  = "#dbac66"
+yellow  = "#ffcb6b"
 blue    = "#6897BB"
-magenta = "#9876AA"
-cyan    = "#6FAFBD"
+magenta = "#c792ea"
+cyan    = "#80bcb6"
 white   = "#e6e6e8"
 
 # Dim colors
 [colors.dim]
 black   = "#000000"
-red     = "#7C4141"
+red     = "#7c4141"
 green   = "#38483d"
-yellow  = "#69472C"
+yellow  = "#69472c"
 blue    = "#405469"
 magenta = "#454479"
-cyan    = "#405469"
+cyan    = "#4d9391"
 white   = "#72737a"

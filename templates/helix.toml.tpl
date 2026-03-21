@@ -2,70 +2,77 @@
 # Автор: ${author}
 # Сгенерировано из palette.toml
 
+# Синтаксис (из IDEA)
 "keyword" = "#${keyword}"
-"type" = "#${type}"
-"type.builtin" = "#${type_builtin}"
-"constant" = "#${constant}"
-"constant.numeric" = "#${constant_numeric}"
-"constant.builtin" = "#${constant_builtin}"
+"type" = "#${cyan}"
+"type.builtin" = "#${orange}"
+"constant" = "#${purple}"
+"constant.numeric" = "#${blue}"
+"constant.builtin" = "#${orange}"
 "function" = "#${function}"
-"function.builtin" = "#${function_builtin}"
+"function.builtin" = "#${orange}"
+"function.method" = "#${function}"
+"function.special" = { fg = "#${function_static}", modifiers = ["italic"] }
 "variable" = "#${variable}"
-"variable.builtin" = "#${variable_builtin}"
-"namespace" = "#${namespace}"
+"variable.builtin" = "#${orange}"
+"namespace" = "#${green_sage}"
 "string" = "#${string}"
-"string.special" = "#${string_special}"
-"comment" = "#${comment}"
-"punctuation" = "#${punctuation}"
-"punctuation.delimiter" = "#${punctuation_delimiter}"
-"operator" = "#${operator}"
-"label" = "#${label}"
+"string.special" = "#${orange}"
+"comment" = "#${comment_line}"
+"comment.block" = "#${comment_block}"
+"comment.block.documentation" = { fg = "#${comment_doc}", modifiers = ["italic"] }
+"attribute" = "#${metadata}"
+"punctuation" = "#${green}"
+"punctuation.delimiter" = "#${orange}"
+"operator" = "#${green}"
+"label" = "#${variable}"
 
-"diff.plus" = "#${diff_added}"
-"diff.delta" = "#${diff_modified}"
-"diff.minus" = "#${diff_removed}"
+"diff.plus" = "#${green_light}"
+"diff.delta" = "#${yellow}"
+"diff.minus" = "#${red}"
 
-"warning" = "#${warning}"
-"error" = "#${error}"
-"info" = "#${info}"
-"hint" = "#${hint}"
+"warning" = "#${yellow}"
+"error" = "#${red}"
+"info" = "#${teal_info}"
+"hint" = "#${teal_hint}"
 
-"diagnostic.error" = { underline = { style = "curl", color = "#${error}" } }
-"diagnostic.warning" = { underline = { style = "curl", color = "#${warning}" } }
-"diagnostic.info" = { underline = { style = "curl", color = "#${info}" } }
-"diagnostic.hint" = { underline = { style = "curl", color = "#${hint}" } }
+"diagnostic.error" = { underline = { style = "curl", color = "#${red}" } }
+"diagnostic.warning" = { underline = { style = "curl", color = "#${yellow}" } }
+"diagnostic.info" = { underline = { style = "curl", color = "#${teal_info}" } }
+"diagnostic.hint" = { underline = { style = "curl", color = "#${teal_hint}" } }
 
-"ui.background" = { bg = "#${background}" }
-"ui.text" = { fg = "#${foreground}" }
+# UI
+"ui.background" = { bg = "#${black}" }
+"ui.text" = { fg = "#${fg1}" }
 "ui.text.focus" = { fg = "#${selection_fg}" }
-"ui.linenr" = { fg = "#${line_number}" }
-"ui.linenr.selected" = { fg = "#${line_number_active}", modifiers = ["bold"] }
-"ui.cursorline" = { bg = "#${background1}" }
-"ui.cursorline.secondary" = { bg = "#${background2}" }
-"ui.cursorcolumn.primary" = { bg = "#${background1}" }
-"ui.cursorcolumn.secondary" = { bg = "#${background2}" }
-"ui.statusline" = { fg = "#${info}", bg = "#${background1}" }
-"ui.statusline.normal" = { fg = "#${hint}", bg = "#${background1}", modifiers = ["reversed", "bold"] }
-"ui.statusline.insert" = { fg = "#${diff_added}", bg = "#${background1}", modifiers = ["reversed", "bold"] }
-"ui.statusline.select" = { fg = "#${constant}", bg = "#${background1}", modifiers = ["reversed", "bold"] }
-"ui.statusline.inactive" = { fg = "#${line_number}", bg = "#${background1}" }
-"ui.popup" = { bg = "#${background1}" }
-"ui.window" = { fg = "#${background1}", bg = "#${background}" }
-"ui.help" = { bg = "#${background1}", fg = "#${foreground_bright}" }
-"ui.selection" = { bg = "#${selection_bg}" }
-"ui.selection.primary" = { bg = "#${selection_bg}" }
+"ui.linenr" = { fg = "#${gray0}" }
+"ui.linenr.selected" = { fg = "#${gray1}", modifiers = ["bold"] }
+"ui.cursorline" = { bg = "#${hx_bg1}" }
+"ui.cursorline.secondary" = { bg = "#${hx_bg2}" }
+"ui.cursorcolumn.primary" = { bg = "#${hx_bg1}" }
+"ui.cursorcolumn.secondary" = { bg = "#${hx_bg2}" }
+"ui.statusline" = { fg = "#${teal_info}", bg = "#${hx_bg1}" }
+"ui.statusline.normal" = { fg = "#${teal_hint}", bg = "#${hx_bg1}", modifiers = ["reversed", "bold"] }
+"ui.statusline.insert" = { fg = "#${green_light}", bg = "#${hx_bg1}", modifiers = ["reversed", "bold"] }
+"ui.statusline.select" = { fg = "#${ultramarine}", bg = "#${hx_bg1}", modifiers = ["reversed", "bold"] }
+"ui.statusline.inactive" = { fg = "#${gray0}", bg = "#${hx_bg1}" }
+"ui.popup" = { bg = "#${hx_bg1}" }
+"ui.window" = { fg = "#${hx_bg1}", bg = "#${black}" }
+"ui.help" = { bg = "#${hx_bg1}", fg = "#${fg0}" }
+"ui.selection" = { bg = "#${hx_selection_bg}" }
+"ui.selection.primary" = { bg = "#${hx_selection_bg}" }
 "ui.cursor.primary" = { modifiers = ["reversed"] }
-"ui.cursor.match" = { fg = "#${background1}", bg = "#${constant}" }
-"ui.menu" = { fg = "#${foreground_bright}", bg = "#${background1}" }
-"ui.menu.selected" = { fg = "#${selection_fg}", bg = "#${background2}", modifiers = ["bold"] }
-"ui.virtual.wrap" = "#${background2}"
-"ui.virtual.whitespace" = "#${foreground}"
-"ui.virtual.indent-guide" = "#${background2}"
-"ui.virtual.ruler" = { bg = "#${background1}" }
-"ui.virtual.inlay-hint" = "#${line_number_active}"
-"ui.virtual.inlay-hint.parameter" = { fg = "#${line_number_active}", modifiers = ["dim"] }
-"ui.virtual.inlay-hint.type" = { fg = "#${line_number_active}", modifiers = ["dim"] }
-"ui.debug.breakpoint" = "#${error}"
-"ui.debug.active" = "#${warning}"
+"ui.cursor.match" = { fg = "#${hx_bg1}", bg = "#${ultramarine}" }
+"ui.menu" = { fg = "#${fg0}", bg = "#${hx_bg1}" }
+"ui.menu.selected" = { fg = "#${selection_fg}", bg = "#${hx_bg2}", modifiers = ["bold"] }
+"ui.virtual.wrap" = "#${hx_bg2}"
+"ui.virtual.whitespace" = "#${fg1}"
+"ui.virtual.indent-guide" = "#${hx_bg2}"
+"ui.virtual.ruler" = { bg = "#${hx_bg1}" }
+"ui.virtual.inlay-hint" = "#${gray1}"
+"ui.virtual.inlay-hint.parameter" = { fg = "#${gray1}", modifiers = ["dim"] }
+"ui.virtual.inlay-hint.type" = { fg = "#${gray1}", modifiers = ["dim"] }
+"ui.debug.breakpoint" = "#${red}"
+"ui.debug.active" = "#${yellow}"
 
 [palette]

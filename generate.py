@@ -21,36 +21,24 @@ OUTPUT_DIR = ROOT / "output"
 
 
 def load_palette() -> dict:
-    """Загружает palette.toml и разрешает роли → HEX-значения."""
+    """Загружает palette.toml → плоский dict для подстановки."""
     with open(PALETTE_FILE, "rb") as f:
         data = tomllib.load(f)
 
-    colors = data["colors"]
-    roles = data["roles"]
-    meta = data["meta"]
-
-    # Разрешаем роли: role -> color_name -> hex
-    resolved = {}
-    for role, color_name in roles.items():
-        if color_name in colors:
-            resolved[role] = colors[color_name]
-        else:
-            print(f"  предупреждение: роль '{role}' ссылается на "
-                  f"несуществующий цвет '{color_name}'", file=sys.stderr)
-            resolved[role] = "ff00ff"  # magenta = ошибка видна сразу
-
-    # Всё вместе: прямые цвета + разрешённые роли + мета
     ctx = {}
-    # Цвета с префиксом c_ (для прямого доступа): c_red, c_black...
-    for name, hex_val in colors.items():
-        ctx[f"c_{name}"] = hex_val
-    # Роли без префикса: keyword, string, comment...
-    ctx.update(resolved)
+
     # Мета
-    ctx.update(meta)
-    # Удобные варианты с #
+    ctx.update(data.get("meta", {}))
+
+    # Все цвета напрямую
+    colors = data.get("colors", {})
+    ctx.update(colors)
+
+    # Варианты с # для удобства: ${keyword_h} → #69472c
     for key, val in list(ctx.items()):
-        if len(val) == 6 and all(c in "0123456789abcdefABCDEF" for c in val):
+        if isinstance(val, str) and len(val) == 6 and all(
+            c in "0123456789abcdefABCDEF" for c in val
+        ):
             ctx[f"{key}_h"] = f"#{val}"
 
     return ctx
@@ -83,15 +71,12 @@ def generate(targets: list[str] | None = None):
     ctx = load_palette()
     OUTPUT_DIR.mkdir(exist_ok=True)
 
-    templates = sorted(TEMPLATES_DIR.glob("*"))
+    templates = sorted(TEMPLATES_DIR.glob("*.tpl"))
     if not templates:
         print("Нет шаблонов в templates/")
         return
 
     for tpl_path in templates:
-        if not tpl_path.name.endswith(".tpl"):
-            continue
-
         # Имя цели: helix.toml.tpl → helix
         target_name = tpl_path.stem.split(".")[0]
         if targets and target_name not in targets:
@@ -114,14 +99,11 @@ def generate(targets: list[str] | None = None):
         override_path = TEMPLATES_DIR / f"{out_name}.override"
         if override_path.exists():
             override_text = override_path.read_text()
-            # Подставляем переменные и в оверрайде
             override_text = Template(override_text).safe_substitute(ctx)
 
             if out_name.endswith(".json"):
-                # JSON: deep merge
                 result = json_merge(result, override_text, tpl_path.name)
             else:
-                # TOML/sh/icls: дописываем в конец
                 result = result.rstrip("\n") + "\n\n" + override_text
 
         out_path.write_text(result)

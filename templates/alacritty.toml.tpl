@@ -3,58 +3,58 @@
 # Сгенерировано из palette.toml
 
 [colors.primary]
-background = "#${background}"
-foreground = "#${foreground}"
+background = "#${black}"
+foreground = "#${fg1}"
 
 [colors.cursor]
-cursor = "#${cursor}"
-text   = "#${background}"
+cursor = "#${fg0}"
+text   = "#${black}"
 
 [colors.vi_mode_cursor]
-cursor = "#${cursor}"
-text   = "#${background}"
+cursor = "#${fg0}"
+text   = "#${black}"
 
 [colors.selection]
 background = "#${selection_bg}"
 text       = "#${selection_fg}"
 
 [colors.search.matches]
-background = "#${c_bg3}"
-foreground = "#${foreground_bright}"
+background = "#${search_bg}"
+foreground = "#${fg0}"
 
 [colors.search.focused_match]
-background = "#${info}"
-foreground = "#${background}"
+background = "#${teal_info}"
+foreground = "#${black}"
 
 # Normal colors
 [colors.normal]
-black   = "#${background}"
-red     = "#${error}"
-green   = "#${c_green}"
-yellow  = "#${warning}"
-blue    = "#${c_blue}"
-magenta = "#${constant}"
-cyan    = "#${c_cyan}"
-white   = "#${foreground}"
+black   = "#${black}"
+red     = "#${red}"
+green   = "#${green}"
+yellow  = "#${yellow}"
+blue    = "#${blue}"
+magenta = "#${purple}"
+cyan    = "#${cyan}"
+white   = "#${fg1}"
 
 # Bright colors
 [colors.bright]
-black   = "#${c_gray0}"
-red     = "#${error}"
-green   = "#${c_green_light}"
-yellow  = "#${warning}"
-blue    = "#${c_blue}"
-magenta = "#${c_purple}"
-cyan    = "#${c_cyan}"
-white   = "#${foreground_bright}"
+black   = "#${gray0}"
+red     = "#${fs_deleted}"
+green   = "#${green_light}"
+yellow  = "#${fs_hijacked}"
+blue    = "#${blue}"
+magenta = "#${fs_merged}"
+cyan    = "#${teal_info}"
+white   = "#${fg0}"
 
 # Dim colors
 [colors.dim]
-black   = "#${background}"
-red     = "#${c_brown_dark}"
-green   = "#${c_green_moss}"
-yellow  = "#${c_brown}"
-blue    = "#${c_blue_dark}"
-magenta = "#${c_dark_purple}"
-cyan    = "#${hint}"
-white   = "#${foreground_dim}"
+black   = "#${black}"
+red     = "#${function}"
+green   = "#${comment_line}"
+yellow  = "#${keyword}"
+blue    = "#${variable}"
+magenta = "#${dark_purple}"
+cyan    = "#${teal_hint}"
+white   = "#${not_used_fg}"
