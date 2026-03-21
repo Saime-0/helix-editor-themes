@@ -1,0 +1,87 @@
+[meta]
+name = "Black Warm"
+author = "saime-0 <acc.saime.d@gmail.com>"
+variant = "dark"
+
+# ── Палитра ──────────────────────────────────────────────
+# Все цвета без #, добавляется в шаблонах где нужно
+[colors]
+black          = "000000"
+bg0            = "0c0c0c"
+bg1            = "151515"
+bg2            = "1e1e1e"
+bg3            = "2a2a2a"
+
+fg0            = "e6e6e8"
+fg1            = "adadb9"
+fg2            = "72737a"
+
+gray0          = "545c5e"
+gray1          = "919a9c"
+
+# Акцентные
+red            = "cd5c60"
+orange         = "CC7832"
+yellow         = "dbac66"
+green          = "507C3B"
+green_light    = "6fb593"
+cyan           = "6FAFBD"
+blue           = "6897BB"
+blue_dark      = "405469"
+purple         = "9876AA"
+brown          = "69472C"
+brown_light    = "9e7959"
+brown_dark     = "7C4141"
+
+# Специфичные
+selection_fg   = "68f3ca"
+selection_bg   = "192336"
+green_moss     = "38483d"
+green_sage     = "AFBF7E"
+dark_purple    = "454479"
+
+# ── Семантика ────────────────────────────────────────────
+# Маппинг ролей → цветов палитры
+[roles]
+background     = "black"
+background1    = "bg0"
+background2    = "bg1"
+background3    = "bg2"
+foreground     = "fg1"
+foreground_bright = "fg0"
+foreground_dim = "fg2"
+
+keyword        = "brown"
+string         = "dark_purple"
+comment        = "green_moss"
+function       = "brown_light"
+function_builtin = "orange"
+type           = "cyan"
+type_builtin   = "orange"
+variable       = "blue_dark"
+variable_builtin = "orange"
+constant       = "purple"
+constant_numeric = "blue"
+constant_builtin = "orange"
+namespace      = "green_sage"
+operator       = "green"
+punctuation    = "green"
+punctuation_delimiter = "orange"
+label          = "blue_dark"
+string_special = "orange"
+
+error          = "red"
+warning        = "yellow"
+info           = "cyan"
+hint           = "blue_dark"
+
+selection_fg   = "selection_fg"
+selection_bg   = "selection_bg"
+
+diff_added     = "green_light"
+diff_modified  = "purple"
+diff_removed   = "red"
+
+cursor         = "fg0"
+line_number    = "gray0"
+line_number_active = "gray1"
