@@ -1,0 +1,61 @@
+# Демонстрация синтаксиса TOML для проверки темы.
+
+[meta]
+name = "Black Warm"
+version = "1.0.0"
+description = "Тёплая тёмная тема для редакторов"
+
+[author]
+name = "saime-0"
+email = "acc.saime.d@gmail.com"
+
+[config]
+workers = 4
+max_retry = 3
+timeout = 30_000
+debug = false
+ratio = 3.14159
+tags = ["dark", "warm", "minimal"]
+created = 2024-01-15T10:30:00Z
+
+[config.nested.deep]
+value = true
+list = [1, 2, 3]
+
+[[tasks]]
+id = 1
+name = "build"
+status = "done"
+priority = 5
+
+[tasks.meta]
+duration = 120
+cached = true
+
+[[tasks]]
+id = 2
+name = "test"
+status = "running"
+priority = 3
+
+[tasks.meta]
+attempt = 2
+parallel = false
+
+# Многострочные значения
+[strings]
+basic = "строка с \"кавычками\""
+literal = 'raw string без \escape'
+multiline_basic = """
+первая строка
+вторая строка
+третья строка"""
+multiline_literal = '''
+raw multiline
+без \обработки'''
+
+# Inline tables
+[colors]
+red = { hex = "cd5c60", rgb = [205, 92, 96] }
+green = { hex = "507C3B", rgb = [80, 124, 59] }
+blue = { hex = "6897BB", rgb = [104, 151, 187] }

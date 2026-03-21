@@ -1,0 +1,44 @@
+{
+  "name": "Black Warm",
+  "version": "1.0.0",
+  "description": "Тёплая тёмная тема для редакторов",
+  "author": {
+    "name": "saime-0",
+    "email": "acc.saime.d@gmail.com",
+    "url": null
+  },
+  "config": {
+    "workers": 4,
+    "maxRetry": 3,
+    "timeout": 30000,
+    "debug": false,
+    "ratio": 3.14159,
+    "tags": ["dark", "warm", "minimal"],
+    "empty": [],
+    "nested": {
+      "deep": {
+        "value": true,
+        "list": [1, 2, 3, null, "строка"]
+      }
+    }
+  },
+  "tasks": [
+    {
+      "id": 1,
+      "name": "build",
+      "status": "done",
+      "priority": 5,
+      "meta": { "duration": 120, "cached": true }
+    },
+    {
+      "id": 2,
+      "name": "test",
+      "status": "running",
+      "priority": 3,
+      "meta": { "attempt": 2, "parallel": false }
+    }
+  ],
+  "regex": "^task-\\d+$",
+  "escaped": "строка с \"кавычками\" и \\n переносом",
+  "unicode": "символы: \u2603 \u2764 \u2728"
+}

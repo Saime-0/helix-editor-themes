@@ -1,0 +1,85 @@
+# Демонстрация синтаксиса YAML для проверки темы.
+
+meta:
+  name: "Black Warm"
+  version: "1.0.0"
+  description: Тёплая тёмная тема для редакторов
+
+author:
+  name: saime-0
+  email: acc.saime.d@gmail.com
+  url: ~
+
+config:
+  workers: 4
+  max_retry: 3
+  timeout: 30000
+  debug: false
+  ratio: 3.14159
+  tags:
+    - dark
+    - warm
+    - minimal
+  empty: []
+  nested:
+    deep:
+      value: true
+      list: [1, 2, 3]
+
+# Разные типы значений
+types:
+  string_plain: просто строка
+  string_quoted: "строка с \"кавычками\""
+  string_single: 'без escape'
+  integer: 42
+  hex: 0xFF
+  float: 3.14
+  scientific: 1.5e+10
+  boolean_true: true
+  boolean_false: false
+  null_tilde: ~
+  null_word: null
+  date: 2024-01-15
+  datetime: 2024-01-15T10:30:00Z
+
+# Multiline
+multiline:
+  literal: |
+    первая строка
+    вторая строка
+    третья строка
+  folded: >
+    это всё будет
+    в одну строку
+    при парсинге
+
+# Anchors & aliases
+defaults: &defaults
+  status: pending
+  priority: 0
+  retries: 3
+
+tasks:
+  - id: 1
+    name: build
+    <<: *defaults
+    status: done
+    priority: 5
+    meta:
+      duration: 120
+      cached: true
+
+  - id: 2
+    name: test
+    <<: *defaults
+    status: running
+    priority: 3
+
+  - id: 3
+    name: deploy
+    <<: *defaults
+    priority: 8
+    tags: [prod, critical]
+
+# Flow style
+colors: {red: "#cd5c60", green: "#507C3B", blue: "#6897BB"}
