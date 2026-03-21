@@ -1,4 +1,4 @@
-# ${name} — тема для Helix
+# ${name} v${version} — тема для Helix
 # Автор: ${author}
 # Сгенерировано из palette.toml
 

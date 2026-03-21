@@ -1,4 +1,4 @@
-# ${name} — тема для Alacritty
+# ${name} v${version} — тема для Alacritty
 # Автор: ${author}
 # Сгенерировано из palette.toml
 

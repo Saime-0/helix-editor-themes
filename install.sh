@@ -7,7 +7,7 @@
 set -euo pipefail
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
-TARGETS=("${@:-helix idea zed alacritty}")
+TARGETS=("${@:-helix idea zed alacritty vscode}")
 
 python3 "$DIR/generate.py" "${TARGETS[@]}"
 
@@ -39,6 +39,29 @@ for target in "${TARGETS[@]}"; do
             mkdir -p "$dest"
             cp "$DIR/output/alacritty.toml" "$dest/black-warm.toml"
             echo "  alacritty: $dest/black-warm.toml"
+            ;;
+        vscode)
+            dest="$HOME/.vscode/extensions/black-warm-theme/themes"
+            mkdir -p "$dest"
+            cp "$DIR/output/vscode.json" "$dest/black-warm-color-theme.json"
+            # package.json for the extension
+            cat > "$(dirname "$dest")/package.json" <<'PKGJSON'
+{
+  "name": "black-warm-theme",
+  "displayName": "Black Warm",
+  "version": "0.1.0",
+  "engines": { "vscode": "^1.60.0" },
+  "categories": ["Themes"],
+  "contributes": {
+    "themes": [{
+      "label": "Black Warm",
+      "uiTheme": "vs-dark",
+      "path": "./themes/black-warm-color-theme.json"
+    }]
+  }
+}
+PKGJSON
+            echo "  vscode: $dest/black-warm-color-theme.json"
             ;;
         *)
             echo "  неизвестная цель: $target" >&2
