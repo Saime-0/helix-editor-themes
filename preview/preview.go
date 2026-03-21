@@ -1,4 +1,4 @@
-// Package preview демонстрирует все элементы синтаксиса Go.
+// Package preview demonstrates all Go syntax elements.
 package preview
 
 import (
@@ -10,20 +10,20 @@ import (
 	"time"
 )
 
-// Status представляет состояние задачи.
+// Status represents a task state.
 type Status int
 
 const (
-	Pending  Status = iota // ожидание
-	Running                // выполнение
-	Done                   // завершено
+	Pending  Status = iota // pending
+	Running                // running
+	Done                   // done
 	maxRetry        = 3
 	piValue         = 3.14159
 	hexFlag         = 0xFF
-	greeting        = "привет, мир"
+	greeting        = "hello, world"
 )
 
-// Task описывает единицу работы.
+// Task describes a unit of work.
 type Task struct {
 	ID        int64             `json:"id"`
 	Name      string            `json:"name"`
@@ -34,13 +34,13 @@ type Task struct {
 	cancel    context.CancelFunc
 }
 
-// Runner интерфейс исполнителя.
+// Runner is an executor interface.
 type Runner interface {
 	Run(ctx context.Context, task *Task) error
 	Stop() error
 }
 
-// Scheduler управляет задачами.
+// Scheduler manages tasks.
 type Scheduler struct {
 	mu      sync.RWMutex
 	tasks   []*Task
@@ -48,7 +48,7 @@ type Scheduler struct {
 	done    chan struct{}
 }
 
-// NewScheduler создаёт планировщик.
+// NewScheduler creates a scheduler.
 func NewScheduler(workers int) *Scheduler {
 	return &Scheduler{
 		workers: workers,
@@ -56,7 +56,7 @@ func NewScheduler(workers int) *Scheduler {
 	}
 }
 
-// Submit добавляет задачу.
+// Submit adds a task.
 func (s *Scheduler) Submit(name string, tags ...string) *Task {
 	s.mu.Lock()
 	defer s.mu.Unlock()
@@ -73,7 +73,7 @@ func (s *Scheduler) Submit(name string, tags ...string) *Task {
 	return t
 }
 
-// Process обрабатывает задачи с ретраями.
+// Process handles tasks with retries.
 func (s *Scheduler) Process(ctx context.Context) error {
 	for i, task := range s.tasks {
 		select {
@@ -86,7 +86,7 @@ func (s *Scheduler) Process(ctx context.Context) error {
 
 		for retry := 0; retry < maxRetry; retry++ {
 			if err := s.execute(task); err != nil {
-				fmt.Printf("задача %d/%d ошибка (попытка %d): %v\n",
+				fmt.Printf("task %d/%d error (attempt %d): %v\n",
 					i+1, len(s.tasks), retry+1, err)
 				continue
 			}
@@ -96,15 +96,15 @@ func (s *Scheduler) Process(ctx context.Context) error {
 		task.Status = Done
 	}
 
-	// Строковые операции
+	// String operations
 	names := make([]string, 0, len(s.tasks))
 	for _, t := range s.tasks {
 		names = append(names, t.Name)
 	}
 	summary := strings.Join(names, ", ")
-	fmt.Printf("завершено: [%s]\n", summary)
+	fmt.Printf("completed: [%s]\n", summary)
 
-	// Числа и математика
+	// Numbers and math
 	angle := math.Pi / 4
 	sin := math.Sin(angle)
 	_ = sin
@@ -114,7 +114,7 @@ func (s *Scheduler) Process(ctx context.Context) error {
 
 func (s *Scheduler) execute(t *Task) error {
 	if t == nil {
-		return fmt.Errorf("задача не может быть nil")
+		return fmt.Errorf("task must not be nil")
 	}
 	t.Meta["executed_at"] = time.Now().Unix()
 	return nil

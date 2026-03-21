@@ -1,15 +1,15 @@
 #!/bin/bash
-# Демонстрация синтаксиса Bash для проверки темы.
+# Bash syntax demo for theme preview.
 
 set -euo pipefail
 
-# Константы
+# Constants
 readonly MAX_RETRY=3
 readonly HEX_FLAG=0xFF
-readonly GREETING="привет, мир"
+readonly GREETING="hello, world"
 readonly CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}"
 
-# Массивы
+# Arrays
 declare -a TASKS=("build" "test" "deploy")
 declare -A STATUS=(
     [build]="pending"
@@ -17,7 +17,7 @@ declare -A STATUS=(
     [deploy]="pending"
 )
 
-# Функции
+# Functions
 log() {
     local level="$1"
     shift
@@ -29,14 +29,14 @@ execute_task() {
     local retry="${2:-0}"
 
     if [[ -z "$name" ]]; then
-        log "ERROR" "имя задачи не может быть пустым"
+        log "ERROR" "task name cannot be empty"
         return 1
     fi
 
     STATUS[$name]="running"
-    log "INFO" "выполняю: $name (попытка $((retry + 1)))"
+    log "INFO" "executing: $name (attempt $((retry + 1)))"
 
-    # Подстановка команд, арифметика
+    # Command substitution, arithmetic
     local start_time
     start_time=$(date +%s)
 
@@ -45,7 +45,7 @@ execute_task() {
     fi
 
     local elapsed=$(( $(date +%s) - start_time ))
-    log "INFO" "$name завершено за ${elapsed}с"
+    log "INFO" "$name completed in ${elapsed}s"
 
     STATUS[$name]="done"
 }
@@ -61,32 +61,32 @@ process_all() {
                 results+=("$task: ok")
                 break
             fi
-            log "WARN" "retry $((retry + 1)) для $task"
+            log "WARN" "retry $((retry + 1)) for $task"
         done
 
         if [[ "$success" != true ]]; then
-            log "ERROR" "не удалось: $task"
+            log "ERROR" "failed: $task"
             return 1
         fi
     done
 
-    # Join результатов
+    # Join results
     local IFS=', '
-    echo "завершено: ${results[*]}"
+    echo "completed: ${results[*]}"
 }
 
-# Условия, glob, regex
+# Conditions, glob, regex
 check_config() {
     local file="$1"
 
     if [[ ! -f "$file" ]]; then
-        log "ERROR" "файл не найден: $file"
+        log "ERROR" "file not found: $file"
         return 1
     fi
 
     # Regex match
     if [[ "$file" =~ ^.*\.(toml|json|ya?ml)$ ]]; then
-        log "INFO" "конфигурация: ${BASH_REMATCH[1]}"
+        log "INFO" "configuration: ${BASH_REMATCH[1]}"
     fi
 
     # Case
@@ -94,7 +94,7 @@ check_config() {
         toml) cat "$file" ;;
         json) python3 -m json.tool "$file" ;;
         yaml|yml) cat "$file" ;;
-        *) log "WARN" "неизвестный формат" ;;
+        *) log "WARN" "unknown format" ;;
     esac
 }
 
@@ -108,16 +108,16 @@ debug = ${DEBUG:-false}
 EOF
 }
 
-# Heredoc без интерполяции
+# Heredoc without interpolation
 show_help() {
     cat <<'EOF'
-Использование:
-    ./preview.sh [команда]
+Usage:
+    ./preview.sh [command]
 
-Команды:
-    run      запуск всех задач
-    check    проверка конфигурации
-    help     эта справка
+Commands:
+    run      run all tasks
+    check    check configuration
+    help     show this help
 EOF
 }
 
@@ -125,17 +125,17 @@ EOF
 count_done() {
     local count
     count=$(printf '%s\n' "${STATUS[@]}" | grep -c "done" || true)
-    echo "завершено: $count из ${#STATUS[@]}"
+    echo "completed: $count of ${#STATUS[@]}"
 }
 
 # Trap
 cleanup() {
-    log "INFO" "очистка..."
+    log "INFO" "cleaning up..."
     rm -f /tmp/preview_*.tmp
 }
 trap cleanup EXIT
 
-# Точка входа
+# Entry point
 main() {
     local cmd="${1:-run}"
 
@@ -143,7 +143,7 @@ main() {
         run)   process_all ;;
         check) check_config "${2:-palette.toml}" ;;
         help)  show_help ;;
-        *)     log "ERROR" "неизвестная команда: $cmd"; exit 1 ;;
+        *)     log "ERROR" "unknown command: $cmd"; exit 1 ;;
     esac
 }
 

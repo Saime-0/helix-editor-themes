@@ -1,4 +1,4 @@
-// Демонстрация синтаксиса TypeScript для проверки темы.
+// TypeScript syntax demonstration for theme preview.
 
 import { EventEmitter } from "events";
 
@@ -9,14 +9,14 @@ enum Status {
   Done = "done",
 }
 
-// Константы
+// Constants
 const MAX_RETRY = 3;
 const PI = 3.14159;
 const HEX_FLAG = 0xff;
-const GREETING = "привет, мир";
-const TEMPLATE = `задач: ${MAX_RETRY}, число: ${PI}`;
+const GREETING = "hello, world";
+const TEMPLATE = `tasks: ${MAX_RETRY}, number: ${PI}`;
 
-// Интерфейсы
+// Interfaces
 interface TaskMeta {
   [key: string]: string | number | boolean;
 }
@@ -36,7 +36,7 @@ type EventName = "submit" | "complete" | "error";
 type Callback<T> = (data: T) => void;
 type Nullable<T> = T | null | undefined;
 
-// Класс
+// Class
 class Scheduler extends EventEmitter {
   private tasks: Task[] = [];
   private readonly workers: number;
@@ -87,7 +87,7 @@ class Scheduler extends EventEmitter {
 
   private async execute(task: Task): Promise<void> {
     if (!task.name) {
-      throw new Error("пустое имя задачи");
+      throw new Error("empty task name");
     }
     task.meta["executed_at"] = Date.now();
   }
@@ -98,7 +98,7 @@ class Scheduler extends EventEmitter {
   }
 }
 
-// Деструктуризация, spread, rest
+// Destructuring, spread, rest
 function formatTask({ id, name, status, ...rest }: Task): string {
   const tagStr = rest.tags.join(", ");
   return `#${id} ${name} [${status}] tags: ${tagStr}`;
@@ -118,7 +118,7 @@ type IsString<T> = T extends string ? true : false;
 
 // Regex
 const pattern = /^task-(\d+)$/gi;
-const escaped = "строка с \"кавычками\" и \n переносом";
+const escaped = "string with \"quotes\" and \n newline";
 
 // Arrow + promise
 const delay = (ms: number): Promise<void> =>

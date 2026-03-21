@@ -1,5 +1,5 @@
 <?php
-// Демонстрация синтаксиса PHP для проверки темы.
+// PHP syntax demonstration for theme preview.
 
 declare(strict_types=1);
 
@@ -9,7 +9,7 @@ use App\Contracts\Runner;
 use InvalidArgumentException;
 use RuntimeException;
 
-// Константы
+// Constants
 const MAX_RETRY = 3;
 define('HEX_FLAG', 0xFF);
 
@@ -39,7 +39,7 @@ readonly class Task
         private array $meta = [],
     ) {
         if (empty($name)) {
-            throw new InvalidArgumentException('имя задачи не может быть пустым');
+            throw new InvalidArgumentException('task name must not be empty');
         }
     }
 
@@ -76,7 +76,7 @@ class Scheduler implements \Countable
     }
 
     /**
-     * Обрабатывает все задачи с ретраями.
+     * Processes all tasks with retries.
      *
      * @return string[]
      * @throws RuntimeException
@@ -95,7 +95,7 @@ class Scheduler implements \Countable
                 } catch (\Throwable $e) {
                     if ($retry === MAX_RETRY - 1) {
                         throw new RuntimeException(
-                            "не удалось выполнить: {$e->getMessage()}"
+                            "failed to execute: {$e->getMessage()}"
                         );
                     }
                     error_log("retry " . ($retry + 1) . ": {$e->getMessage()}");
@@ -127,10 +127,10 @@ class Scheduler implements \Countable
 function describe(Status $status): string
 {
     return match ($status) {
-        Status::Pending => 'ожидание',
-        Status::Running => 'выполняется',
-        Status::Done => 'готово',
-        Status::Failed => 'ошибка',
+        Status::Pending => 'pending',
+        Status::Running => 'running',
+        Status::Done => 'done',
+        Status::Failed => 'failed',
     };
 }
 
@@ -148,7 +148,7 @@ $query = <<<SQL
 SQL;
 
 $raw = <<<'EOT'
-    raw string без $interpolation
+    raw string without $interpolation
 EOT;
 
 // Null coalescing, spread
@@ -159,7 +159,7 @@ $all = [...$numbers, ...$evens];
 $pattern = '/^task-(\d+)$/i';
 $match = preg_match($pattern, 'task-42', $matches);
 
-// Числа
+// Numbers
 $pi = 3.14159;
 $hex = 0xFF00;
 $bin = 0b1010;

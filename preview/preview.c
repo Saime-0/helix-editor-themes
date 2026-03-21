@@ -1,4 +1,4 @@
-/* Демонстрация синтаксиса C для проверки темы. */
+/* Demonstration of C syntax for theme preview. */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,12 +12,12 @@
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof((a)[0]))
 #define LOG(fmt, ...) fprintf(stderr, "[%s:%d] " fmt "\n", __FILE__, __LINE__, ##__VA_ARGS__)
 
-/* Константы */
+/* Constants */
 static const double PI = 3.14159265358979;
-static const char *GREETING = "привет, мир";
+static const char *GREETING = "hello, world";
 static const int WORKERS = 4;
 
-/* Перечисление */
+/* Enumeration */
 typedef enum {
     STATUS_PENDING,
     STATUS_RUNNING,
@@ -25,7 +25,7 @@ typedef enum {
     STATUS_FAILED
 } Status;
 
-/* Структуры */
+/* Structures */
 typedef struct {
     char key[64];
     char value[256];
@@ -49,10 +49,10 @@ typedef struct {
     int    workers;
 } Scheduler;
 
-/* Указатель на функцию */
+/* Function pointer */
 typedef bool (*TaskFilter)(const Task *task, void *ctx);
 
-/* Прототипы */
+/* Prototypes */
 static Task *task_new(int64_t id, const char *name);
 static void  task_free(Task *task);
 static void  task_add_tag(Task *task, const char *tag);
@@ -63,12 +63,12 @@ static void       scheduler_free(Scheduler *s);
 static void       scheduler_submit(Scheduler *s, const char *name);
 static int        scheduler_process(Scheduler *s);
 
-/* Реализация */
+/* Implementation */
 static Task *task_new(int64_t id, const char *name)
 {
     Task *t = calloc(1, sizeof(Task));
     if (!t) {
-        LOG("ошибка выделения памяти");
+        LOG("memory allocation error");
         return NULL;
     }
 
@@ -93,7 +93,7 @@ static void task_free(Task *task)
 static void task_add_tag(Task *task, const char *tag)
 {
     if (task->tag_count >= (int)ARRAY_SIZE(task->tags)) {
-        LOG("превышен лимит тегов для '%s'", task->name);
+        LOG("tag limit exceeded for '%s'", task->name);
         return;
     }
     task->tags[task->tag_count++] = strdup(tag);
@@ -107,7 +107,7 @@ static bool task_execute(Task *task)
 
     task->status = STATUS_RUNNING;
 
-    /* Имитация работы */
+    /* Simulate work */
     double result = sin(PI / 4.0) * cos(PI / 4.0);
     (void)result;
 
@@ -151,12 +151,12 @@ static int scheduler_process(Scheduler *s)
                 completed++;
                 break;
             }
-            LOG("retry %d для '%s'", retry + 1, t->name);
+            LOG("retry %d for '%s'", retry + 1, t->name);
         }
 
         if (!success) {
             t->status = STATUS_FAILED;
-            LOG("не удалось: '%s'", t->name);
+            LOG("failed: '%s'", t->name);
         }
     }
 
@@ -176,7 +176,7 @@ static void scheduler_free(Scheduler *s)
     free(s);
 }
 
-/* Фильтрация через callback */
+/* Filtering via callback */
 static int scheduler_filter(Scheduler *s, TaskFilter fn, void *ctx)
 {
     int count = 0;
@@ -195,7 +195,7 @@ static bool filter_done(const Task *t, void *ctx)
     return t->status == STATUS_DONE;
 }
 
-/* Битовые операции, switch */
+/* Bitwise operations, switch */
 static const char *status_name(Status s)
 {
     switch (s) {
@@ -219,26 +219,26 @@ int main(int argc, char *argv[])
     scheduler_submit(s, "test");
     scheduler_submit(s, "deploy");
 
-    /* Теги */
+    /* Tags */
     task_add_tag(s->head, "ci");
     task_add_tag(s->head, "docker");
 
     int done = scheduler_process(s);
-    printf("завершено %d из %d\n", done, s->count);
+    printf("completed %d of %d\n", done, s->count);
 
-    /* Числа */
+    /* Numbers */
     uint32_t mask = HEX_FLAG & 0xF0;
     int oct = 0777;
     long bin = 0b10101010;
     printf("mask=%u oct=%d bin=%ld\n", mask, oct, bin);
 
-    /* Строки */
+    /* Strings */
     char buf[64];
-    snprintf(buf, sizeof(buf), "задач: %d, pi: %.4f", s->count, PI);
+    snprintf(buf, sizeof(buf), "tasks: %d, pi: %.4f", s->count, PI);
     printf("%s\n", buf);
 
-    /* Фильтрация */
-    printf("завершённые:\n");
+    /* Filtering */
+    printf("completed:\n");
     scheduler_filter(s, filter_done, NULL);
 
     scheduler_free(s);

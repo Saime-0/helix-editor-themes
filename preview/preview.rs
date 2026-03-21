@@ -1,10 +1,10 @@
-// Демонстрация синтаксиса Rust для проверки темы.
+// Rust syntax demonstration for theme preview.
 
 use std::collections::HashMap;
 use std::fmt;
 use std::sync::{Arc, Mutex};
 
-/// Статус задачи.
+/// Task status.
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum Status {
     Pending,
@@ -13,7 +13,7 @@ pub enum Status {
     Failed(u8),
 }
 
-/// Задача с метаданными.
+/// Task with metadata.
 #[derive(Debug)]
 pub struct Task {
     pub id: u64,
@@ -60,18 +60,18 @@ impl fmt::Display for Task {
     }
 }
 
-/// Ошибки задачи.
+/// Task errors.
 #[derive(Debug, thiserror::Error)]
 pub enum TaskError {
-    #[error("пустое имя задачи")]
+    #[error("empty task name")]
     EmptyName,
-    #[error("превышен лимит ретраев ({0})")]
+    #[error("retry limit exceeded ({0})")]
     RetryExhausted(u8),
-    #[error("внутренняя ошибка: {0}")]
+    #[error("internal error: {0}")]
     Internal(String),
 }
 
-/// Планировщик с потокобезопасным доступом.
+/// Scheduler with thread-safe access.
 pub struct Scheduler {
     tasks: Arc<Mutex<Vec<Task>>>,
     workers: usize,

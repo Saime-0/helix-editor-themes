@@ -1,4 +1,4 @@
--- Демонстрация синтаксиса SQL для проверки темы.
+-- SQL syntax demo for theme preview.
 
 CREATE TABLE IF NOT EXISTS tasks (
     id          BIGSERIAL PRIMARY KEY,
@@ -25,7 +25,7 @@ VALUES
     ('test', 'running', 3, ARRAY['ci'], '{"attempt": 2}'),
     ('deploy', 'pending', 8, ARRAY['prod'], '{}');
 
--- Select с подзапросом, JOIN, агрегацией
+-- Select with subquery, JOIN, aggregation
 SELECT
     t.id,
     t.name,
@@ -77,7 +77,7 @@ SELECT
     SUM(priority) OVER (ORDER BY created_at ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS rolling_sum
 FROM tasks;
 
--- Update с RETURNING
+-- Update with RETURNING
 UPDATE tasks
 SET
     status = 'done',
@@ -87,7 +87,7 @@ WHERE status = 'running'
   AND created_at < NOW() - INTERVAL '1 hour'
 RETURNING id, name;
 
--- Функция
+-- Function
 CREATE OR REPLACE FUNCTION retry_task(
     p_task_id BIGINT,
     p_max_retry INTEGER DEFAULT 3
@@ -107,7 +107,7 @@ BEGIN
     WHERE id = p_task_id;
 
     IF v_attempt >= p_max_retry THEN
-        RAISE NOTICE 'задача % превысила лимит ретраев', v_name;
+        RAISE NOTICE 'task % exceeded retry limit', v_name;
         RETURN FALSE;
     END IF;
 

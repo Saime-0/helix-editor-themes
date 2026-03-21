@@ -1,9 +1,9 @@
-# Демонстрация синтаксиса TOML для проверки темы.
+# TOML syntax demonstration for theme preview.
 
 [meta]
 name = "Black Warm"
 version = "1.0.0"
-description = "Тёплая тёмная тема для редакторов"
+description = "Warm dark theme for editors"
 
 [author]
 name = "saime-0"
@@ -42,17 +42,17 @@ priority = 3
 attempt = 2
 parallel = false
 
-# Многострочные значения
+# Multiline values
 [strings]
-basic = "строка с \"кавычками\""
-literal = 'raw string без \escape'
+basic = "string with \"quotes\""
+literal = 'raw string without \escape'
 multiline_basic = """
-первая строка
-вторая строка
-третья строка"""
+first line
+second line
+third line"""
 multiline_literal = '''
 raw multiline
-без \обработки'''
+without \processing'''
 
 # Inline tables
 [colors]

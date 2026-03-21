@@ -1,4 +1,4 @@
-# Демонстрация синтаксиса Python для проверки темы.
+# Python syntax demonstration for theme preview.
 
 from __future__ import annotations
 
@@ -10,15 +10,15 @@ from enum import Enum, auto
 from pathlib import Path
 from typing import Any, Callable, TypeVar
 
-# Константы
+# Constants
 MAX_RETRY: int = 3
 PI: float = 3.14159
 HEX_MASK: int = 0xFF00
-GREETING: str = "привет, мир"
+GREETING: str = "hello, world"
 
 
 class Status(Enum):
-    """Статус задачи."""
+    """Task status."""
     PENDING = auto()
     RUNNING = auto()
     DONE = auto()
@@ -27,7 +27,7 @@ class Status(Enum):
 
 @dataclass
 class Task:
-    """Единица работы."""
+    """Unit of work."""
     id: int
     name: str
     status: Status = Status.PENDING
@@ -36,7 +36,7 @@ class Task:
 
     def __post_init__(self) -> None:
         if not self.name:
-            raise ValueError("имя задачи не может быть пустым")
+            raise ValueError("task name cannot be empty")
 
     def __str__(self) -> str:
         return f"Task#{self.id} '{self.name}' [{self.status.name}]"
@@ -46,21 +46,21 @@ class Task:
         return self.status == Status.DONE
 
     def execute(self) -> None:
-        """Выполняет задачу."""
+        """Executes the task."""
         self.status = Status.RUNNING
         self.meta["attempt"] = self.meta.get("attempt", 0) + 1
         self.status = Status.DONE
 
 
 class TaskError(Exception):
-    """Ошибка выполнения задачи."""
+    """Task execution error."""
 
 
 T = TypeVar("T")
 
 
 class Scheduler:
-    """Планировщик задач."""
+    """Task scheduler."""
 
     def __init__(self, workers: int = 4) -> None:
         self._tasks: list[Task] = []
@@ -86,7 +86,7 @@ class Scheduler:
                     break
                 except Exception as exc:
                     if retry == MAX_RETRY - 1:
-                        raise TaskError(f"не удалось: {exc}") from exc
+                        raise TaskError(f"failed: {exc}") from exc
                     print(f"retry {retry + 1}: {exc}")
 
         return results
@@ -100,13 +100,13 @@ class Scheduler:
 def describe_status(status: Status) -> str:
     match status:
         case Status.PENDING:
-            return "ожидание"
+            return "pending"
         case Status.RUNNING:
-            return "выполняется"
+            return "running"
         case Status.DONE:
-            return "готово"
+            return "done"
         case _:
-            return "неизвестно"
+            return "unknown"
 
 
 # Async
@@ -121,8 +121,8 @@ def summary(tasks: list[Task]) -> str:
     counts = {s: sum(1 for t in tasks if t.status == s) for s in Status}
 
     if (total := len(done)) > 0:
-        return f"завершено {total}: {', '.join(done)}"
-    return "нет завершённых задач"
+        return f"completed {total}: {', '.join(done)}"
+    return "no completed tasks"
 
 
 # Decorators

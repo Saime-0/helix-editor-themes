@@ -1,11 +1,11 @@
-// Демонстрация синтаксиса JavaScript для проверки темы.
+// JavaScript syntax demonstration for theme preview.
 
 "use strict";
 
 const MAX_RETRY = 3;
 const PI = 3.14159;
 const HEX_FLAG = 0xff;
-const GREETING = "привет, мир";
+const GREETING = "hello, world";
 
 class Task {
   #meta = {};
@@ -24,7 +24,7 @@ class Task {
 
   set statusValue(value) {
     if (!["pending", "running", "done"].includes(value)) {
-      throw new Error(`неизвестный статус: ${value}`);
+      throw new Error(`unknown status: ${value}`);
     }
     this.status = value;
   }
@@ -40,7 +40,7 @@ class Task {
   }
 }
 
-// Наследование
+// Inheritance
 class PriorityTask extends Task {
   constructor(id, name, priority = 0) {
     super(id, name);
@@ -85,19 +85,19 @@ function* idGenerator(start = 1) {
 // Proxy, Reflect
 const handler = {
   get(target, prop, receiver) {
-    console.log(`доступ: ${String(prop)}`);
+    console.log(`access: ${String(prop)}`);
     return Reflect.get(target, prop, receiver);
   },
   set(target, prop, value) {
-    console.log(`запись: ${String(prop)} = ${value}`);
+    console.log(`write: ${String(prop)} = ${value}`);
     return Reflect.set(target, prop, value);
   },
 };
 
 // Regex, template literals
 const pattern = /^task-(?<id>\d+)$/gi;
-const escaped = "строка с \"кавычками\" и \n переносом";
-const template = `всего: ${MAX_RETRY}, число: ${PI.toFixed(2)}`;
+const escaped = "string with \"quotes\" and \n newline";
+const template = `total: ${MAX_RETRY}, number: ${PI.toFixed(2)}`;
 
 // Nullish, optional chaining, spread
 function formatTask(task) {

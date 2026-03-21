@@ -1,7 +1,7 @@
 {
   "name": "Black Warm",
   "version": "1.0.0",
-  "description": "Тёплая тёмная тема для редакторов",
+  "description": "Warm dark theme for editors",
   "author": {
     "name": "saime-0",
     "email": "acc.saime.d@gmail.com",
@@ -18,7 +18,7 @@
     "nested": {
       "deep": {
         "value": true,
-        "list": [1, 2, 3, null, "строка"]
+        "list": [1, 2, 3, null, "string"]
       }
     }
   },
@@ -39,6 +39,6 @@
     }
   ],
   "regex": "^task-\\d+$",
-  "escaped": "строка с \"кавычками\" и \\n переносом",
-  "unicode": "символы: \u2603 \u2764 \u2728"
+  "escaped": "string with \"quotes\" and \\n newline",
+  "unicode": "symbols: \u2603 \u2764 \u2728"
 }

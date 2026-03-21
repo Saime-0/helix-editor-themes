@@ -1,9 +1,9 @@
-# Демонстрация синтаксиса YAML для проверки темы.
+# YAML syntax demonstration for theme preview.
 
 meta:
   name: "Black Warm"
   version: "1.0.0"
-  description: Тёплая тёмная тема для редакторов
+  description: Warm dark theme for editors
 
 author:
   name: saime-0
@@ -26,11 +26,11 @@ config:
       value: true
       list: [1, 2, 3]
 
-# Разные типы значений
+# Various value types
 types:
-  string_plain: просто строка
-  string_quoted: "строка с \"кавычками\""
-  string_single: 'без escape'
+  string_plain: just a string
+  string_quoted: "string with \"quotes\""
+  string_single: 'without escape'
   integer: 42
   hex: 0xFF
   float: 3.14
@@ -45,13 +45,13 @@ types:
 # Multiline
 multiline:
   literal: |
-    первая строка
-    вторая строка
-    третья строка
+    first line
+    second line
+    third line
   folded: >
-    это всё будет
-    в одну строку
-    при парсинге
+    this will all be
+    on one line
+    when parsed
 
 # Anchors & aliases
 defaults: &defaults
