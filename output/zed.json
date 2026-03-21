@@ -1,8 +1,8 @@
 {
   "$schema": "https://zed.dev/schema/themes/v0.2.0.json",
   "name": "Black Warm",
-  "version": "0.1.0",
-  "author": "saime-0 <acc.saime.d@gmail.com>",
+  "version": "0.2.0",
+  "author": "dsaime <acc.saime.d@gmail.com>",
   "themes": [
     {
       "name": "Black Warm",
