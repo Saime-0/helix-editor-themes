@@ -21,11 +21,31 @@
 "comment" = "#38483d"
 "comment.block" = "#2d3828"
 "comment.block.documentation" = { fg = "#253423", modifiers = ["italic"] }
+"tag" = "#69472c"
 "attribute" = "#9765b0"
 "punctuation" = "#507C3B"
 "punctuation.delimiter" = "#CC7832"
 "operator" = "#507C3B"
 "label" = "#405469"
+
+# Markup
+"markup.heading" = { fg = "#80bcb6", modifiers = ["bold"] }
+"markup.heading.1" = { fg = "#80bcb6", modifiers = ["bold"] }
+"markup.heading.2" = { fg = "#6FAFBD", modifiers = ["bold"] }
+"markup.heading.3" = { fg = "#6897BB", modifiers = ["bold"] }
+"markup.heading.4" = { fg = "#9876AA" }
+"markup.heading.5" = { fg = "#9765b0" }
+"markup.heading.6" = { fg = "#919a9c" }
+"markup.bold" = { modifiers = ["bold"] }
+"markup.italic" = { modifiers = ["italic"] }
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
+"markup.link.url" = { fg = "#dbac66", underline = { style = "line" } }
+"markup.link.text" = "#68f3ca"
+"markup.raw" = "#AFBF7E"
+"markup.raw.block" = "#AFBF7E"
+"markup.raw.inline" = "#CC7832"
+"markup.list" = "#CC7832"
+"markup.quote" = { fg = "#638159", modifiers = ["italic"] }
 
 "diff.plus" = "#6fb593"
 "diff.delta" = "#dbac66"
@@ -47,28 +67,28 @@
 "ui.text.focus" = { fg = "#68f3ca" }
 "ui.linenr" = { fg = "#545c5e" }
 "ui.linenr.selected" = { fg = "#919a9c", modifiers = ["bold"] }
-"ui.cursorline" = { bg = "#222225" }
-"ui.cursorline.secondary" = { bg = "#303035" }
-"ui.cursorcolumn.primary" = { bg = "#222225" }
-"ui.cursorcolumn.secondary" = { bg = "#303035" }
-"ui.statusline" = { fg = "#80bcb6", bg = "#222225" }
-"ui.statusline.normal" = { fg = "#4d9391", bg = "#222225", modifiers = ["reversed", "bold"] }
-"ui.statusline.insert" = { fg = "#6fb593", bg = "#222225", modifiers = ["reversed", "bold"] }
-"ui.statusline.select" = { fg = "#968cc7", bg = "#222225", modifiers = ["reversed", "bold"] }
-"ui.statusline.inactive" = { fg = "#545c5e", bg = "#222225" }
-"ui.popup" = { bg = "#222225" }
-"ui.window" = { fg = "#222225", bg = "#000000" }
-"ui.help" = { bg = "#222225", fg = "#e6e6e8" }
-"ui.selection" = { bg = "#192336" }
-"ui.selection.primary" = { bg = "#192336" }
+"ui.cursorline" = { bg = "#0c0c0c" }
+"ui.cursorline.secondary" = { bg = "#151515" }
+"ui.cursorcolumn.primary" = { bg = "#0c0c0c" }
+"ui.cursorcolumn.secondary" = { bg = "#151515" }
+"ui.statusline" = { fg = "#80bcb6", bg = "#181818" }
+"ui.statusline.normal" = { fg = "#4d9391", bg = "#181818", modifiers = ["reversed", "bold"] }
+"ui.statusline.insert" = { fg = "#6fb593", bg = "#181818", modifiers = ["reversed", "bold"] }
+"ui.statusline.select" = { fg = "#968cc7", bg = "#181818", modifiers = ["reversed", "bold"] }
+"ui.statusline.inactive" = { fg = "#545c5e", bg = "#181818" }
+"ui.popup" = { bg = "#181818" }
+"ui.window" = { fg = "#181818", bg = "#000000" }
+"ui.help" = { bg = "#181818", fg = "#e6e6e8" }
+"ui.selection" = { bg = "#0e141e" }
+"ui.selection.primary" = { bg = "#0e141e" }
 "ui.cursor.primary" = { modifiers = ["reversed"] }
-"ui.cursor.match" = { fg = "#222225", bg = "#968cc7" }
-"ui.menu" = { fg = "#e6e6e8", bg = "#222225" }
-"ui.menu.selected" = { fg = "#68f3ca", bg = "#303035", modifiers = ["bold"] }
-"ui.virtual.wrap" = "#303035"
+"ui.cursor.match" = { fg = "#181818", bg = "#968cc7" }
+"ui.menu" = { fg = "#e6e6e8", bg = "#181818" }
+"ui.menu.selected" = { fg = "#68f3ca", bg = "#1e1e1e", modifiers = ["bold"] }
+"ui.virtual.wrap" = "#1e1e1e"
 "ui.virtual.whitespace" = "#adadb9"
-"ui.virtual.indent-guide" = "#303035"
-"ui.virtual.ruler" = { bg = "#222225" }
+"ui.virtual.indent-guide" = "#151515"
+"ui.virtual.ruler" = { bg = "#0c0c0c" }
 "ui.virtual.inlay-hint" = "#919a9c"
 "ui.virtual.inlay-hint.parameter" = { fg = "#919a9c", modifiers = ["dim"] }
 "ui.virtual.inlay-hint.type" = { fg = "#919a9c", modifiers = ["dim"] }

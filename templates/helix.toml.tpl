@@ -21,11 +21,31 @@
 "comment" = "#${comment_line}"
 "comment.block" = "#${comment_block}"
 "comment.block.documentation" = { fg = "#${comment_doc}", modifiers = ["italic"] }
+"tag" = "#${keyword}"
 "attribute" = "#${metadata}"
 "punctuation" = "#${green}"
 "punctuation.delimiter" = "#${orange}"
 "operator" = "#${green}"
 "label" = "#${variable}"
+
+# Markup
+"markup.heading" = { fg = "#${teal_info}", modifiers = ["bold"] }
+"markup.heading.1" = { fg = "#${teal_info}", modifiers = ["bold"] }
+"markup.heading.2" = { fg = "#${cyan}", modifiers = ["bold"] }
+"markup.heading.3" = { fg = "#${blue}", modifiers = ["bold"] }
+"markup.heading.4" = { fg = "#${purple}" }
+"markup.heading.5" = { fg = "#${metadata}" }
+"markup.heading.6" = { fg = "#${gray1}" }
+"markup.bold" = { modifiers = ["bold"] }
+"markup.italic" = { modifiers = ["italic"] }
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
+"markup.link.url" = { fg = "#${yellow}", underline = { style = "line" } }
+"markup.link.text" = "#${selection_fg}"
+"markup.raw" = "#${green_sage}"
+"markup.raw.block" = "#${green_sage}"
+"markup.raw.inline" = "#${orange}"
+"markup.list" = "#${orange}"
+"markup.quote" = { fg = "#${comment_doc_tag}", modifiers = ["italic"] }
 
 "diff.plus" = "#${green_light}"
 "diff.delta" = "#${yellow}"
@@ -47,28 +67,28 @@
 "ui.text.focus" = { fg = "#${selection_fg}" }
 "ui.linenr" = { fg = "#${gray0}" }
 "ui.linenr.selected" = { fg = "#${gray1}", modifiers = ["bold"] }
-"ui.cursorline" = { bg = "#${hx_bg1}" }
-"ui.cursorline.secondary" = { bg = "#${hx_bg2}" }
-"ui.cursorcolumn.primary" = { bg = "#${hx_bg1}" }
-"ui.cursorcolumn.secondary" = { bg = "#${hx_bg2}" }
-"ui.statusline" = { fg = "#${teal_info}", bg = "#${hx_bg1}" }
-"ui.statusline.normal" = { fg = "#${teal_hint}", bg = "#${hx_bg1}", modifiers = ["reversed", "bold"] }
-"ui.statusline.insert" = { fg = "#${green_light}", bg = "#${hx_bg1}", modifiers = ["reversed", "bold"] }
-"ui.statusline.select" = { fg = "#${ultramarine}", bg = "#${hx_bg1}", modifiers = ["reversed", "bold"] }
-"ui.statusline.inactive" = { fg = "#${gray0}", bg = "#${hx_bg1}" }
-"ui.popup" = { bg = "#${hx_bg1}" }
-"ui.window" = { fg = "#${hx_bg1}", bg = "#${black}" }
-"ui.help" = { bg = "#${hx_bg1}", fg = "#${fg0}" }
-"ui.selection" = { bg = "#${hx_selection_bg}" }
-"ui.selection.primary" = { bg = "#${hx_selection_bg}" }
+"ui.cursorline" = { bg = "#${bg_caret_row}" }
+"ui.cursorline.secondary" = { bg = "#${bg_indent}" }
+"ui.cursorcolumn.primary" = { bg = "#${bg_caret_row}" }
+"ui.cursorcolumn.secondary" = { bg = "#${bg_indent}" }
+"ui.statusline" = { fg = "#${teal_info}", bg = "#${bg_lookup}" }
+"ui.statusline.normal" = { fg = "#${teal_hint}", bg = "#${bg_lookup}", modifiers = ["reversed", "bold"] }
+"ui.statusline.insert" = { fg = "#${green_light}", bg = "#${bg_lookup}", modifiers = ["reversed", "bold"] }
+"ui.statusline.select" = { fg = "#${ultramarine}", bg = "#${bg_lookup}", modifiers = ["reversed", "bold"] }
+"ui.statusline.inactive" = { fg = "#${gray0}", bg = "#${bg_lookup}" }
+"ui.popup" = { bg = "#${bg_lookup}" }
+"ui.window" = { fg = "#${bg_lookup}", bg = "#${black}" }
+"ui.help" = { bg = "#${bg_lookup}", fg = "#${fg0}" }
+"ui.selection" = { bg = "#${selection_bg}" }
+"ui.selection.primary" = { bg = "#${selection_bg}" }
 "ui.cursor.primary" = { modifiers = ["reversed"] }
-"ui.cursor.match" = { fg = "#${hx_bg1}", bg = "#${ultramarine}" }
-"ui.menu" = { fg = "#${fg0}", bg = "#${hx_bg1}" }
-"ui.menu.selected" = { fg = "#${selection_fg}", bg = "#${hx_bg2}", modifiers = ["bold"] }
-"ui.virtual.wrap" = "#${hx_bg2}"
+"ui.cursor.match" = { fg = "#${bg_lookup}", bg = "#${ultramarine}" }
+"ui.menu" = { fg = "#${fg0}", bg = "#${bg_lookup}" }
+"ui.menu.selected" = { fg = "#${selection_fg}", bg = "#${bg_hint_border}", modifiers = ["bold"] }
+"ui.virtual.wrap" = "#${bg_hint_border}"
 "ui.virtual.whitespace" = "#${fg1}"
-"ui.virtual.indent-guide" = "#${hx_bg2}"
-"ui.virtual.ruler" = { bg = "#${hx_bg1}" }
+"ui.virtual.indent-guide" = "#${bg_indent}"
+"ui.virtual.ruler" = { bg = "#${bg_caret_row}" }
 "ui.virtual.inlay-hint" = "#${gray1}"
 "ui.virtual.inlay-hint.parameter" = { fg = "#${gray1}", modifiers = ["dim"] }
 "ui.virtual.inlay-hint.type" = { fg = "#${gray1}", modifiers = ["dim"] }

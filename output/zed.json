@@ -122,7 +122,10 @@
           "property": { "color": "#405469" },
           "namespace": { "color": "#AFBF7E" },
           "boolean": { "color": "#CC7832" },
-          "embedded": { "color": "#33e3e3" }
+          "embedded": { "color": "#33e3e3" },
+          "link_uri": { "color": "#dbac66" },
+          "link_text": { "color": "#68f3ca" },
+          "title": { "color": "#80bcb6", "font_weight": 700 }
         }
       }
     }

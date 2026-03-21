@@ -122,7 +122,10 @@
           "property": { "color": "#${variable}" },
           "namespace": { "color": "#${green_sage}" },
           "boolean": { "color": "#${orange}" },
-          "embedded": { "color": "#${template_fg}" }
+          "embedded": { "color": "#${template_fg}" },
+          "link_uri": { "color": "#${yellow}" },
+          "link_text": { "color": "#${selection_fg}" },
+          "title": { "color": "#${teal_info}", "font_weight": 700 }
         }
       }
     }
