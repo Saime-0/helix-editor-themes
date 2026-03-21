@@ -1,0 +1,71 @@
+# Black Warm — тема для Helix
+# Автор: saime-0 <acc.saime.d@gmail.com>
+# Сгенерировано из palette.toml
+
+"keyword" = "#69472C"
+"type" = "#6FAFBD"
+"type.builtin" = "#CC7832"
+"constant" = "#9876AA"
+"constant.numeric" = "#6897BB"
+"constant.builtin" = "#CC7832"
+"function" = "#9e7959"
+"function.builtin" = "#CC7832"
+"variable" = "#405469"
+"variable.builtin" = "#CC7832"
+"namespace" = "#AFBF7E"
+"string" = "#454479"
+"string.special" = "#CC7832"
+"comment" = "#38483d"
+"punctuation" = "#507C3B"
+"punctuation.delimiter" = "#CC7832"
+"operator" = "#507C3B"
+"label" = "#405469"
+
+"diff.plus" = "#6fb593"
+"diff.delta" = "#9876AA"
+"diff.minus" = "#cd5c60"
+
+"warning" = "#dbac66"
+"error" = "#cd5c60"
+"info" = "#6FAFBD"
+"hint" = "#405469"
+
+"diagnostic.error" = { underline = { style = "curl", color = "#cd5c60" } }
+"diagnostic.warning" = { underline = { style = "curl", color = "#dbac66" } }
+"diagnostic.info" = { underline = { style = "curl", color = "#6FAFBD" } }
+"diagnostic.hint" = { underline = { style = "curl", color = "#405469" } }
+
+"ui.background" = { bg = "#000000" }
+"ui.text" = { fg = "#adadb9" }
+"ui.text.focus" = { fg = "#68f3ca" }
+"ui.linenr" = { fg = "#545c5e" }
+"ui.linenr.selected" = { fg = "#919a9c", modifiers = ["bold"] }
+"ui.cursorline" = { bg = "#0c0c0c" }
+"ui.cursorline.secondary" = { bg = "#151515" }
+"ui.cursorcolumn.primary" = { bg = "#0c0c0c" }
+"ui.cursorcolumn.secondary" = { bg = "#151515" }
+"ui.statusline" = { fg = "#6FAFBD", bg = "#0c0c0c" }
+"ui.statusline.normal" = { fg = "#405469", bg = "#0c0c0c", modifiers = ["reversed", "bold"] }
+"ui.statusline.insert" = { fg = "#6fb593", bg = "#0c0c0c", modifiers = ["reversed", "bold"] }
+"ui.statusline.select" = { fg = "#9876AA", bg = "#0c0c0c", modifiers = ["reversed", "bold"] }
+"ui.statusline.inactive" = { fg = "#545c5e", bg = "#0c0c0c" }
+"ui.popup" = { bg = "#0c0c0c" }
+"ui.window" = { fg = "#0c0c0c", bg = "#000000" }
+"ui.help" = { bg = "#0c0c0c", fg = "#e6e6e8" }
+"ui.selection" = { bg = "#192336" }
+"ui.selection.primary" = { bg = "#192336" }
+"ui.cursor.primary" = { modifiers = ["reversed"] }
+"ui.cursor.match" = { fg = "#0c0c0c", bg = "#9876AA" }
+"ui.menu" = { fg = "#e6e6e8", bg = "#0c0c0c" }
+"ui.menu.selected" = { fg = "#68f3ca", bg = "#151515", modifiers = ["bold"] }
+"ui.virtual.wrap" = "#151515"
+"ui.virtual.whitespace" = "#adadb9"
+"ui.virtual.indent-guide" = "#151515"
+"ui.virtual.ruler" = { bg = "#0c0c0c" }
+"ui.virtual.inlay-hint" = "#919a9c"
+"ui.virtual.inlay-hint.parameter" = { fg = "#919a9c", modifiers = ["dim"] }
+"ui.virtual.inlay-hint.type" = { fg = "#919a9c", modifiers = ["dim"] }
+"ui.debug.breakpoint" = "#cd5c60"
+"ui.debug.active" = "#dbac66"
+
+[palette]

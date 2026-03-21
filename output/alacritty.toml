@@ -1,0 +1,60 @@
+# Black Warm — тема для Alacritty
+# Автор: saime-0 <acc.saime.d@gmail.com>
+# Сгенерировано из palette.toml
+
+[colors.primary]
+background = "#000000"
+foreground = "#adadb9"
+
+[colors.cursor]
+cursor = "#e6e6e8"
+text   = "#000000"
+
+[colors.vi_mode_cursor]
+cursor = "#e6e6e8"
+text   = "#000000"
+
+[colors.selection]
+background = "#192336"
+text       = "#68f3ca"
+
+[colors.search.matches]
+background = "#2a2a2a"
+foreground = "#e6e6e8"
+
+[colors.search.focused_match]
+background = "#6FAFBD"
+foreground = "#000000"
+
+# Normal colors
+[colors.normal]
+black   = "#000000"
+red     = "#cd5c60"
+green   = "#507C3B"
+yellow  = "#dbac66"
+blue    = "#6897BB"
+magenta = "#9876AA"
+cyan    = "#6FAFBD"
+white   = "#adadb9"
+
+# Bright colors
+[colors.bright]
+black   = "#545c5e"
+red     = "#cd5c60"
+green   = "#6fb593"
+yellow  = "#dbac66"
+blue    = "#6897BB"
+magenta = "#9876AA"
+cyan    = "#6FAFBD"
+white   = "#e6e6e8"
+
+# Dim colors
+[colors.dim]
+black   = "#000000"
+red     = "#7C4141"
+green   = "#38483d"
+yellow  = "#69472C"
+blue    = "#405469"
+magenta = "#454479"
+cyan    = "#405469"
+white   = "#72737a"
